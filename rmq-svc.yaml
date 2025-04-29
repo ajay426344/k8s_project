@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-queue
+spec:
+  selector:         #This is main component of the service and helps it to route the requests to the correct pod.
+    app: queue
+  ports:
+    - name: http
+      port: 8161
+      targetPort: 8161
+      nodePort: 30010
+    - name: endpoints
+      port: 61616
+      targetPort: 61616
+      nodePort: 30011
+  type: NodePort
+

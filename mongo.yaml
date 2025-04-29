@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fleetman-mongodb
+  name: fleetman-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fleetman-mongodb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fleetman-mongodb
+    spec:
+      containers:
+      - image: mongo:3.6.23
+        name: mongodb
+        volumeMounts:
+          - name: mongo-pv
+            mountPath: /data/db
+      volumes:
+        - name: mongo-pv
+          hostPath:
+            type: DirectoryOrCreate
+            path: /mnt/mongodb
