@@ -3,10 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
 spec:
-  storageClassName: localstorage
+  storageClassName: cloud-ssd
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi
-  volumeName: mongodb-pv
+        # volumeName: mongodb-pv
